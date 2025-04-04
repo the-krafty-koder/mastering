@@ -1,0 +1,32 @@
+# Web security
+
+The act of protecting websites from unauthorized use, modification, access or
+disruption.
+
+## Web security threats
+
+    ### Cross site scripting ( XSS )
+    An attack that allows client side scripts to be injected into the user's
+    browser via the site.
+
+    ### SQL Injection
+    Enables malicious users to execute SQL code into a database, allowing data access / modification.
+
+    ### Cross Site Request Forgery (CSRF)
+    Allows a user to mimic another user by using their credentials
+
+    ### Clickjacking
+    A malicious user hijacks clicks meant for a site and redirects them to
+    another site.
+
+    ### Denial of Service
+    Target site is flooded with fake requests so that it becomes unusable for intended users.
+
+## Cross origin resource sharing (CORS)
+
+A mechanism that allows a server to indicate origins other than its own thats allowed to serve resources to
+
+## Content Security Policy (CSP)
+
+A series of instructions from a website to a browser, instructing the browser to place restrictions on the things the code in thes site can do.
+Used to prevent XSS attacks. A CSP can have other purposes as well, including defending against clickjacking and helping to ensure that a site's pages will be loaded over HTTPS.

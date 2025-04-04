@@ -13,8 +13,12 @@
     "chance": "^1.1.12",
     "cheerio": "^1.0.0",
     "csv-parse": "^5.6.0",
+    "level": "^5.0.1",
     "mkdirp": "^3.0.1",
+    "nanoid": "^5.1.5",
     "slug": "^10.0.0",
-    "superagent": "^10.1.1"
+    "subleveldown": "^6.0.1",
+    "superagent": "^10.1.1",
+    "webpack-cli": "^6.0.1"
   }
 }
