@@ -84,3 +84,18 @@ The browser paints pixels to the screen.
 3. Minify CSS → Remove whitespace and comments.
 4. Use compressed images (webpn for png/jpeg)
 5. Lazy load images (use loading='lazy') and iframes
+
+# Handle browser compatibility
+
+- Use feature detection tools like Modernizr to check if features are
+  supported before using.
+- Use CSS resets or normalize css to reduce style differences across
+  browsers.
+- Cross browser testing using tools like Browserstack
+- Add fallbacks for older browsers such as polyfills in js or
+  @support in CSS
+
+# Single Page Applications
+
+Apps that load a single HTML Page and dynamically update page data
+without refreshing the page.
