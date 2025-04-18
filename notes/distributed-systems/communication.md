@@ -26,3 +26,5 @@
 
    2. Multicast RPC
       Sending an RPC request to a group of servers, who subsequently process the requests in parallel. When done the result is returned to the client where the callback takes place.
+
+2. Message Queues

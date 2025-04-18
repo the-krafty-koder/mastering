@@ -6,27 +6,28 @@ Algorithms: sorting, searching, recursion, dynamic programming
 Big-O notation and complexity analysis
 
 2. System Design
-   RESTful API design
+
+RESTful API design
 
 Authentication and authorization (OAuth2, JWT, sessions)
 
 Database design and normalization
 
-Caching strategies (Redis, Memcached)
+Caching strategies (Redis, Memcached) Done
 
-Rate limiting and throttling
+Rate limiting and throttling Done
 
-Horizontal and vertical scaling
+Horizontal and vertical scaling Done
 
 Load balancing and proxies
 
-Asynchronous processing (queues, workers)
+Asynchronous processing (queues, workers) Done
 
-Microservices vs monolith
+Microservices vs monolith Done
 
 Event-driven architecture
 
-CAP theorem and consistency models
+CAP theorem and consistency models Done
 
 3. Databases
    SQL (joins, indexing, transactions, isolation levels)

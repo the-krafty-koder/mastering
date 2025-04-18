@@ -2,7 +2,8 @@
 
 A communication method used to handle asynchronous communication between components of a system.
 
-- They act as temporary storage for messages between producers and consumers, allowing the producer to continue with other work.
+- They act as temporary storage for messages between producers and consumers, allowing the producer to continue with other work, while the consumer executes.
+- Useful for the asynchronous processing of large requests
 
 # Key components
 
