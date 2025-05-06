@@ -48,3 +48,40 @@ A communication method used to handle asynchronous communication between compone
 RabbitMQ
 Kafka
 Amazon SQS
+
+# AMQP (Advanced Message Queueing Protocol)
+
+RabbitMQ implements this protocol.
+
+A messaging protocol that enables conforming client applications to communicate with conforming messaging middleware brokers.
+
+                           Message Broker
+                     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+      Publisher -> | Exchange -> Binding -> Queue | -> Subscriber
+                     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+
+      Broker consists of:
+
+         1. Queue - the data structure responsible for storing the messages consumed. A queue can be any of:
+            Durable - automatically recreated if the broker restarts.
+            Exclusive - queue is bound to only one particular subscriber connection.
+            Auto-delete - queue will be deleted when last subscriber disconnects.
+
+         2. Exchange - this is where a message is published.  An exchange routes the
+         messages to one or more queues depending on the algorithm it implements:
+            Direct exchange: It routes the messages by matching an entire
+                           routing  key (for example, chat.msg)
+            Topic exchange: It distributes the messages using a glob-like pattern
+                           matched against the routing key (for example, chat.# matches all the routing keys starting with chat.)
+            Fanout exchange: It broadcasts a message to all the connected
+                           queues, ignoring any routing key provided
+
+         3. Binding: This is the link between exchanges and queues. It also defines the routing key or the pattern used to filter the messages that arrive from the exchange.
+
+      Consumer
+      They obtain messages from the broker. are two ways for applications to do this:
+
+         Subscribe to have messages delivered to them ("push API"): this is the recommended option
+         Polling ("pull API"): this way is highly inefficient and should be avoided in most cases.
