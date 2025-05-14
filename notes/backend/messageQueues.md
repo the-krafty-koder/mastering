@@ -85,3 +85,6 @@ A messaging protocol that enables conforming client applications to communicate 
 
          Subscribe to have messages delivered to them ("push API"): this is the recommended option
          Polling ("pull API"): this way is highly inefficient and should be avoided in most cases.
+
+N/B
+A Dead Letter Queue (DLQ) is a special queue used in message-oriented middleware systems like RabbitMQ, Kafka, or AWS SQS to handle messages that cannot be processed successfully. It acts as a safety net, capturing messages that would otherwise be lost or repeatedly cause errors.

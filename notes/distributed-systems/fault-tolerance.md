@@ -138,20 +138,5 @@ Use the `COMMIT` command to end a transaction.
 
 Checkpoints within a transaction that allows you to rollback to it without undoing all the work within the transaction.
 
-```
-START TRANSACTION;
-
-UPDATE product
-SET date_retired = CURRENT_TIMESTAMP()
-WHERE product_cd = 'XYZ';
-
-SAVEPOINT before_close_accounts;
-
-UPDATE account
-SET status = 'CLOSED', close_date = CURRENT_TIMESTAMP(),
-    last_activity_date = CURRENT_TIMESTAMP()
-WHERE product_cd = 'XYZ';
-
-ROLLBACK TO SAVEPOINT before_close_accounts;
-COMMIT;
-```
+N/B
+Learn how Raft and Paxos works

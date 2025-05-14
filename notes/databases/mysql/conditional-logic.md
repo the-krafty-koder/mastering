@@ -23,3 +23,8 @@ WHEN 'Sports' THEN 'All Ages'
 ELSE 'Other'
 END
 ```
+
+SELECT 1 FROM film_actor fa
+INNER JOIN film f ON fa.film_id = f.film_id
+WHERE fa.actor_id = a.actor_id
+AND f.rating = 'PG'

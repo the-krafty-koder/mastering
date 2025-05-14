@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    Messages:
+    <div id="messages"></div>
+    <form id="msgForm" onsubmit="handleSubmit(event)">
+      <input
+        type="text"
+        name="msgBox"
+        id="msgBox"
+        placeholder="Send a message"
+      />
+      <input type="submit" value="Send" />
+    </form>
+    <script>
+      const ws = new WebSocket(`ws://${window.document.location.host}`);
+      ws.onmessage = function (message) {
+        const msgDiv = document.createElement("div");
+        console.log(message);
+        msgDiv.innerHTML = message.data;
+        console.log(message);
+        document.getElementById("messages").appendChild(msgDiv);
+      };
+      const form = document.getElementById("msgForm");
+
+      const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const message = form.msgBox.value;
+
+        ws.send(message);
+        document.getElementById("msgBox").value = "";
+      };
+    </script>
+  </body>
+</html>

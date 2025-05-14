@@ -222,3 +222,28 @@ OAuth 2.1 defines two types of access tokens:
 1. Opaque tokens – Simple identifiers; the resource server must contact the authorization server to verify the client's access rights each time the token is used.
 
 2. Self-contained (signed) tokens – Tokens that embed all access rights directly and are signed by the authorization server; they include an expiration time and don’t require the resource server to check back with the authorization server.
+
+# Monitoring
+
+Keeping track of what is going on in a distributed system so that proper measures can be taken when needed.
+
+Passive way - logging events ( useful only after an event has happened)
+Intrusion detection - detecting unauthorized activities.
+
+# Firewall
+
+Common approach to ensure intruders stay out. A firewall disconnects any part of the distributed system from the outside world. All outgoing and incoming packets are routed via a computer and inspected before continuing.
+
+Types of Firewalls
+
+1. Packet filtering gateway - This type of firewall operates as a router
+   and makes decisions whether to pass a network packet based on the source and destination address as contained in the packet’s header.
+
+2. Application level gateway - In contrast to a packet-filtering gateway  
+   which inspects only the header of network packets, this type of firewall actually inspects the content of an incoming or outgoing message.
+
+# Intrusion Detection
+
+1. Signature based - patterns of known network-level intrusions have been collected against which a new pattern is matched. If there is a match, security operators are warned that an intrusion may be taking place.
+
+2. Anomaly based intrusion detection systems - typical behavior is modelled so that non-typical behavior can be detected.
