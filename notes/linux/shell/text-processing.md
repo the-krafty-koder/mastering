@@ -78,3 +78,44 @@ a single tab character.
 --complement Extract the entire line of text,
 
 `cut -d ':' -f 1 /etc/passwd | head` - extract the first field from the file using : delimiter
+
+# Paste
+
+It adds one or more columns of text to a file. Does the opposite of paste. Like cut, it accepts multiple files as arguments.
+
+`paste distro-dates.txt distro-versions.txt` - place the column in distro-dates before columns in distro-versions.txt
+
+# Join
+
+Joins data from multiple files based on a shared key field. Key field must be sorted for join to work properly.
+
+`join  distro-key-names.txt distro-key-vernums.txt | head` - both files share a common column
+
+# Comparing text
+
+## comm
+
+Compares 2 text files and displays the lines that are unique to each one and the lines they have in common.
+
+`comm file1.txt file2.txt`
+
+## diff
+
+More complex comm. Has two formats, -c and -u (context and unified).
+
+Best to use
+`diff -u file.txt file2.txt`
+
+## patch
+
+Used to apply changes to a text file.
+
+1. First create a diff file
+   `diff -Naur old_file new_file > diff_file`
+2. Patch the old file into the new file.
+   `patch < diff_file`
+
+```
+ diff -Naur file1.txt file2.txt > patchfile.txt
+ patch < patchfile.txt
+```
