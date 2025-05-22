@@ -3,7 +3,7 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import dotenv from "dotenv";
 import path from "path";
-import postRoutes from "./routes/posts.js";
+import routes from "./routes/index.js";
 
 dotenv.config(); // load environment variables into process.env
 const app = express();
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false })); // parsing url encoded form da
 app.use(cookieParser()); // parsing cookies to be used by request.cookies
 app.use(express.static(path.join(process.cwd(), "public")));
 
-app.use("/posts", postRoutes);
+app.use("/", routes);
 
 // catch 404 error and forward to error handler
 app.use((req, res, next) => {
@@ -47,4 +47,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-export default app;
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log("Server running");
+});
