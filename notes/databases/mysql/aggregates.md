@@ -37,3 +37,39 @@ FROM film_actor fa
 INNER JOIN film f
 ON fa.film_id = f.film_id
 GROUP BY fa.actor_id
+
+# Grouping via Rollup
+
+- ROLLUP is a SQL grouping extension that helps you generate subtotals and grand totals across multiple levels of a hierarchy in a single query.
+- It's often used in reports or dashboards to show breakdowns and their summaries without writing multiple UNION queries.
+
+Syntax
+
+```
+SELECT column1, column2, AGG_FUNC(column3)
+FROM table
+GROUP BY ROLLUP (column1, column2);
+```
+
+This produces:
+Grouped by (column1, column2)
+Subtotal for each column1 (with column2 = NULL)
+Grand total (with both column1 and column2 = NULL)
+
+Example
+
+```
+SELECT department, employee, SUM(sales)
+FROM sales_data
+GROUP BY ROLLUP (department, employee);
+```
+
+Output:
+
+dept employee sum
+HR Alice 500
+HR Bob 400
+HR NULL 900
+IT Jane 600
+IT NULL 600
+NULL NULL 1500

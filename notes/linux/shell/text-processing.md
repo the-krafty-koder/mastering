@@ -119,3 +119,56 @@ Used to apply changes to a text file.
  diff -Naur file1.txt file2.txt > patchfile.txt
  patch < patchfile.txt
 ```
+
+# Editing text on the fly
+
+## tr
+
+- Used to transliterate characters. Transliteration is the process of changing characters from one alphabet to another. Example converting characters from lowercase to uppercase.
+
+`echo "lowercase letters" | tr a-z A-Z`
+
+## sed
+
+- Used for filtering and transforming text
+
+`echo "front" | sed 's/front/back/'` - replaces the first occurence of front with back. 's' is a substitution command.
+
+- To match line numbers use the -n flag
+  `sed -n '1,5p' distro.txt` - match lines 1-5 on the distro file.p command causes the line to be printed.
+
+- You can also use sed with regex.
+  `sed <regex> distro.txt `
+- You can replace multiple by chaining like so:
+  `sed 's/front/back'; 's/me/you' distro.txt`
+
+Sed command options
+Command Description
+= Output the current line number.
+a Append text after the current line.
+d Delete the current line.
+i Insert text in front of the current line.
+p Print the current line. By default, sed prints every line and
+only edits lines that match a specified address within the
+file. The default behavior can be overridden by specifying
+the -n option.
+q Exit sed without processing any more lines. If the -n option
+is not specified, output the current line.
+Q Exit sed without processing any more lines.
+s/regexp/replacement/ Substitute the contents of replacement wherever regexp is
+found. replacement may include the special character &,
+which is equivalent to the text matched by regexp. In addi-
+tion, replacement may include the sequences \1 through \9,
+which are the contents of the corresponding subexpressions
+in regexp. For more about this, see the following discus-
+sion of back references. After the trailing slash following
+replacement, an optional flag may be specified to modify
+the s command’s behavior.
+y/set1/set2 Perform transliteration by converting characters from set1 to
+the corresponding characters in set2. Note that unlike tr,
+sed requires that both sets be of the same length.
+
+# aspell
+
+- Interactive spell checker
+  `aspell check <file>`

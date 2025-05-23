@@ -3,9 +3,22 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import dotenv from "dotenv";
 import path from "path";
+import passport from "passport";
+import flash from "express-flash";
+import session from "express-session";
 import routes from "./routes/index.js";
+import authRoutes from "./routes/auth.js";
+import initialize from "./config/passport.js";
+import { getUsers } from "./config/db.js";
 
 dotenv.config(); // load environment variables into process.env
+initialize(
+  passport,
+  (email) => {
+    return getUsers().find((user) => user.email === email);
+  },
+  (id) => getUsers().find((user) => user.id === id)
+);
 const app = express();
 
 // view engine setup
@@ -17,8 +30,19 @@ app.use(express.json()); // parsing the request body to be used by req.body
 app.use(express.urlencoded({ extended: false })); // parsing url encoded form data
 app.use(cookieParser()); // parsing cookies to be used by request.cookies
 app.use(express.static(path.join(process.cwd(), "public")));
+app.use(flash());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", routes);
+app.use("/auth", authRoutes);
 
 // catch 404 error and forward to error handler
 app.use((req, res, next) => {
@@ -49,5 +73,5 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log("Server running");
+  console.log("Server running on 4000");
 });
