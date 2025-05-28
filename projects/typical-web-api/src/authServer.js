@@ -2,6 +2,8 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import dotenv from "dotenv";
+import fs from "fs";
+import https from "https";
 import path from "path";
 import passport from "passport";
 import flash from "express-flash";
@@ -71,7 +73,12 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+const options = {
+  key: fs.readFileSync("../ssl/privKey.pem"),
+  cert: fs.readFileSync("../ssl/catalog.cert"),
+};
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+
+https.createServer(options, app).listen(PORT, () => {
   console.log("Server running on 4000");
 });

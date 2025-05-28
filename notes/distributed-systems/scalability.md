@@ -23,7 +23,7 @@ Fault tolerance - the ability of a system to keep functioning correctly even whe
     1. Retries (exponential backoff, exponential backoff with jitter)
     2. Failover ( active-active, active-passive)
     3. Replication (master-slave, master-master)
-    4, Graceful degradation (ensuring functionality that was being executed ends before exiting the system)
+    4, Graceful shutdown (ensuring functionality that was being executed ends before exiting the system)
 
 Resilience - the ability of a system to recover from failure and return to a healthy state.
 
@@ -72,7 +72,7 @@ Uses
 - Load balancing
 - SSL termination ( decrypting HTTPS (SSL/TLS) traffic at the edge of your network )
 
-# Choosing reverse proxy instead of cluster module
+# Choosing reverse proxy instead of cluster module in Node.js
 
 It is the more traditional approach, they offer more control in highly available production environments.
 

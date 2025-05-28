@@ -22,8 +22,7 @@
 
 ## Client centric consistency models
 
-Provides guarantees for a single client concerning the consistencies of access to a data store by that client. No guarantees are given concerning concurrent accesses by different clients. Solves the problem that users may sometimes operate on different replicas, while
-updates have not been fully propagated.
+Provides guarantees for a single client concerning the consistencies of access to a data store by that client. No guarantees are given concerning concurrent accesses by different clients. Solves the problem that users may sometimes operate on different replicas, while updates have not been fully propagated.
 
 1. Monotonic reads
    If a process reads the value of data item x, any successive read operation on x by that process will always return the same value or a more recent value.
@@ -143,8 +142,7 @@ The server where the read operation is to be performed has seen all the write op
 
 ## Writes follow reads
 
-Implemented by first bringing the selected server up to date with the write operations in the client’s read set, and then later adding the identifier of the write operation to the write set,along with the identifiers in the read set (which have now become relevant
-for the write operation just performed).
+Implemented by first bringing the selected server up to date with the write operations in the client’s read set, and then later adding the identifier of the write operation to the write set,along with the identifiers in the read set (which have now become relevant for the write operation just performed).
 
 N/B
 Query containment check - whether data from a query can be satisfied by a local copy of the data in an edge server

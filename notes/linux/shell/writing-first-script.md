@@ -17,3 +17,17 @@ Scripts are made executable using chmod. `chmod 755` for scripts that everyone c
 # Script file location
 
 For a script to run, we must precede the script name with an explicit path eg `./hello_world`
+
+# () - Designed for integers
+
+(()) is used to perform arithmetic truth tests. An arithmetic truth test
+results in true if the result of the arithmetic evaluation is non-zero.
+
+# Combining expressions
+
+Table 27-4: Logical Operators
+
+    Op      test        [[]] and (( ))
+    AND     -a          &&
+    OR      -o          ||
+    NOT     !           !
