@@ -117,6 +117,97 @@ query OrganizationForLearningReact (
     }
   }
 }
+
+// variables
+{
+  "organization": "the-road-to-learn-react",
+  "repository": "the-road-to-learn-react-chinese",
+  "withFork": true
+}
 ```
 
 - You can use a skip directive in the above sample to achieve the opposite effect.
+
+# Mutations
+
+Used to write data and define the content of data you'd like returned after the write is successful.
+
+```
+mutation AddStar($repositoryId: ID!) {
+  addStar(input: {starrableId: $repositoryId}){
+    starrable {
+      id
+      viewerHasStarred
+    }
+  }
+}
+```
+
+# Pagination
+
+You can request paginated data by providing arguments to a list field, eg an
+argument that says how many items you are expecting from the list.
+
+```
+query {
+  organization(login: "the-road-to-learn-react"){
+    name
+    url
+    repositories(first: 2){
+    	edges {
+        node{
+          name
+        }
+        cursor
+      }
+
+    }
+  }
+}
+```
+
+- The edges and node structure is one of a few solutions to define paginated data structures and lists with GraphQL. Each edge comes with its own cursor field to identify its position in the list.
+
+- You can use cursor as an after argument to retrieve all items after it
+
+```
+query {
+  organization(login: "the-road-to-learn-react"){
+    name
+    url
+    repositories(first: 2, after: "Y3Vyc29yOnYyOpHOA8awSw=="){
+    	edges {
+        node{
+          name
+        }
+        cursor
+      }
+
+    }
+  }
+}
+```
+
+- Returning a cursor for every node can be verbose, so you can include a pageInfo object for every page ( pageInfo is a convention used in a lot of GQL APIs)
+
+```
+query FetchWithCursor($organization: String!, $number: Int, $cursor: String) {
+  organization(login: $organization){
+    name
+    url
+    repositories(first: $number, after: $cursor){
+      totalCount
+      edges {
+        node{
+          name
+        }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+
+    }
+  }
+}
+```
