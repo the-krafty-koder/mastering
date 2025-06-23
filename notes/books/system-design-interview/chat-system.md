@@ -29,7 +29,7 @@ Basic
                             |                                    |
                             |                                    |
             Notification --------- API Servers <->     Chat server Presence servers
-            servers          |                                    |
+            servers         |                                    |
                             |                                    |
                             |                                    |
                             ------------> KV store <--------------

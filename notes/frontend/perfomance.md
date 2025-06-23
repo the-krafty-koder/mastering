@@ -50,3 +50,39 @@ Determines the number of items to display on a page
 6. Optimize images, eg resizing and compressing
 7. Optimize the site loading speed.
 8. Responsive design to improve user experience.
+
+# Web perfomance optimization techniques
+
+Frontend
+
+1. Virtualization
+   Only the currently visible items in a list is rendered. Reduces initial and subsequent loading times. Smoother scrolling and interaction as well as the page is not overloaded.
+2. Code/Bundle splitting
+   Dividing a large codebase into chunks and loading only the necessary chunks when required.
+3. Dynamic imports/ Lazy loading
+   Import code only on interaction / initiliaze object only when required by the users
+4. Optimize the loading sequence
+   Prioritize the loading of essential resources first before content. Use `<link rel='preload>` for critical resources in the <head>
+5. Compression
+   Compress static assets eg images, minify css and js files
+6. Tree shaking
+   Removes unused code from the final bundle before deployment
+7. Pagination
+   Fetch a limited set of data per page
+
+Javascript
+
+1. Defer/ asynchronously load non-essential JS
+   Move non-critical scripts until after initial load
+
+2. Optimize React/Vue apps
+   - Memoize components with expensive computations.
+   - Use <Suspense> to keep users engaged while page loads.
+   - Avoid unnecessary rerenders
+
+Network
+
+1. CDN
+   Deliver static assets via a CDN to reduce load times.
+2. Caching
+   Use service workers for asset and API caching. Employ HTTP caching as well (Cache-Control headers)

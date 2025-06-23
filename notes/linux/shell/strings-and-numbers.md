@@ -77,3 +77,27 @@ Table 34-1: Case Conversion Parameter Expansions
 `${parameter,pattern}` -> Expand the value of parameter, changing only the first character to lowercase.
 `${parameter^^pattern}` -> Expand the value of parameter into all uppercase letters.
 `${parameter^pattern}` -> Expand the value of parameter, changing only the first character to uppercase (capitalization).
+
+# Arithmetic Evaluation and Expansion
+
+The basic form is `$((expression))`. The compound command `(())` is used for truth tests.
+The results of division are always whole numbers `((5/2)) = 2`
+
+## The ternary operator
+
+Works only on arithmetic operations, not strings
+
+```
+a=0
+(($foo>0?++a:--a))     // ternary operator
+echo $a
+> 1
+```
+
+Performing assingment inside a ternary operator is not straightforward: use it like so
+
+`((a<1?(a+=1):(a-=1)))`
+
+# Bc
+
+Used to perform complex operations. View its man page for details

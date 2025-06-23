@@ -24,7 +24,13 @@ An application built as a single unit. Any changes involve building and deployin
    Different services can be built using different technology because the services are decoupled.
 
 6. Infrastructure automation
-   Continuous integration and continuous deployment (CI/CD) pipelines are considered the foundation of any microservices architecture. Automated testing and deployment through these methodologies ensure quick and reliable releases
+   Continuous integration and continuous deployment (CI/CD) pipelines are considered the foundation of any microservices architecture. Automated testing and deployment through these methodologies ensure quick and reliable releases.
+
+   CI/CD consists of 3 components
+
+   1. Continuous integration -> automating the integration of code from multiple developers into a shared central repository. A CI pipeline pulls the code, runs tests, builds the app
+   2. Continuous delivery -> prepares application for release to production. Automatically builds and tests also packages code and pushes it to a staging or pre-production environment.
+   3. Continuous deployment -> automates the release of an application to a production environment.
 
 7. Decentralized data management
    Each service manages its own database, either an instance of the same database technology or different database altogether ( Polyglot persistence )

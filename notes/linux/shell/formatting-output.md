@@ -55,6 +55,7 @@ long
 
 -Mostly used in scripts.
 `printf "I formatted the string: %s\n" foo`
+
 Table 21-4: Common printf Data Type Specifiers
 Specifier Description
 d Format a number as a signed decimal integer.

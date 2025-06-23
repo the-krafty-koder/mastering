@@ -1,16 +1,14 @@
 # Data windows
 
-- Analytic functions provide the ability to group rows into windows, which partition the data to be used by the analytic function without changing the result set.
+- Analytic functions provide the ability to group similar rows into windows, which partition the data to be used by the analytic function without changing the result set.
 - Windows are defined using the over clause combined with an optional partition by subclause.
 
 ```
 mysql> SELECT quarter(payment_date) quarter,
 -> monthname(payment_date) month_nm,
 -> sum(amount) monthly_sales,
--> max(sum(amount))
--> over () max_overall_sales,
--> max(sum(amount))
--> over (partition by quarter(payment_date)) max_qrtr_sales
+-> max(sum(amount)) over () max_overall_sales,
+-> max(sum(amount)) over (partition by quarter(payment_date)) max_qrtr_sales
 -> FROM payment
 -> WHERE year(payment_date) = 2005
 -> GROUP BY quarter(payment_date), monthname(payment_date);
@@ -58,8 +56,7 @@ mysql> SELECT customer_id, count(*) num_rentals,
 mysql> SELECT customer_id,
 -> monthname(rental_date) rental_month,
 -> count(*) num_rentals,
--> rank() over (partition by monthname(rental_date)
--> order by count(*) desc) rank_rnk
+-> rank() over (partition by monthname(rental_date) order by count(*) desc) rank_rnk
 -> FROM rental
 -> GROUP BY customer_id, monthname(rental_date)
 -> ORDER BY 2, 3 desc;

@@ -1,3 +1,5 @@
+# Auto-complete system
+
 System is broken down into:
 
 1. Data gathering service - gathers user input queries and aggregates them in real time.

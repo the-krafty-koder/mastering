@@ -3,8 +3,7 @@
 A program in execution
 Process table - used to keep track of virtual processors.
 
-The operating systems, using hardware ensures processes do not interfere with each other (concurrency transparency). This is not implemented when it comes to threads. The developer is responsible for
-implementing concurrency transparency
+The operating systems, using hardware ensures processes do not interfere with each other (concurrency transparency). This is not implemented when it comes to threads. The developer is responsible for implementing concurrency transparency
 
 # Thread
 

@@ -43,3 +43,7 @@ LBS - Finds nearby businesses for a given radius and location
 - Convert the position of each grid into a binary string.
 - Convert the binary string into base32 characters.
 - For searching convert lat, long into binary -> base32 then return the 8 neighbors of the position.
+
+4. Quadtree
+
+#

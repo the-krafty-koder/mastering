@@ -24,3 +24,17 @@ s.entries() - returns a key value pair of the set's key/values
 - Create a map by passing an array to the Map object
 
 `const m = new Map(["apple", 500], ["oranges":100])`
+
+# Map methods
+
+```
+m.get('apples') - access method
+m.set('bananas', 500) - add to map method
+m.size - returns the number of elements in map
+m.delete('apples') - removes element from map
+m.has('apples') - returns true if key exists in map
+m.keys() - returns an iterator object with keys of a map
+m.values() - returns an iterator object with values of a map
+m.entries() - returns an "" with key, value pairs of a map
+m.forEach((value, key)) - invokes a callback for each key, value pair in map
+```

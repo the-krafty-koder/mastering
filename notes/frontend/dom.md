@@ -25,8 +25,11 @@ how and when different elements respond to user actions.
 - Has 2 APIs:
   Localstorage - stores data without an expiration
   Session storage - stored data with an expiration ( once browser tab is closed, data is lost)
-  `  localStorage.setItem("id", "245")
-localStorage.getItem("id")`
+
+  ```
+    localStorage.setItem("id", "245")
+    localStorage.getItem("id")
+  ```
 
   N/B
   IndexedDB - more powerful client storage (compared to local storage) built into the browser. Can store large amounts of structured data, organised by (key, value).It is also transcaction based for better reliability.

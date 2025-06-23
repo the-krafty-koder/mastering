@@ -62,7 +62,14 @@ Reliable point to point communication is achieved by using a reliable transport 
 # Atomic multicast
 
 Guarantees that a message is delivered to either all non-faulty group members or none.
-Virtual synchrony - The principle of virtual synchrony comes from the fact that all multicasts take place between view changes.A view change happens when a process is added or leaves the receiver group or the sender crashes. Put somewhat differently, a view change acts as a barrier across which no multicast can pass. If view change happens when a multicast is in the process, receivers ignore the message.
+
+To achieve this, each process in the group keeps a copy of every message it receives until it knows all other members have also received it. A message is considered stable when it has reached every process in the current view (Gi). Stability is crucial because a sender might crash before completing its multicast, potentially leaving some members without the message.
+
+When a view change occurs, such as when a process crashes or a new member joins, a view-change message is broadcast. Upon receiving this message, each process forwards its unstable messages to all members of the new view (Gi+1) to ensure consistency. Once all unstable messages are sent, each process sends a flush message, indicating readiness to install the new view.
+
+Only after receiving flush messages from all other processes can a member safely transition to the new view, ensuring no messages are lost. If further failures occur before this transition is complete, the protocol supports announcing additional view changes to handle overlapping failures.
+
+- Virtual synchrony - The principle of virtual synchrony comes from the fact that all multicasts take place between view changes.A view change happens when a process is added or leaves the receiver group or the sender crashes. Put somewhat differently, a view change acts as a barrier across which no multicast can pass. If view change happens when a multicast is in the process, receivers ignore the message.
 
 # Distributed Commit
 
