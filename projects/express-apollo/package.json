@@ -11,17 +11,24 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.12.2",
-    "apollo-server-express": "^3.13.0",
+    "@graphql-tools/schema": "^10.0.23",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
+    "dataloader": "^2.2.3",
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
     "graphql": "^16.11.0",
+    "graphql-resolvers": "^0.4.2",
+    "graphql-scalars": "^1.24.2",
+    "graphql-subscriptions": "^3.0.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-ws": "^5.11.0",
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.10",
     "pg": "^8.16.0",
     "sequelize": "^6.37.7",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "ws": "^8.18.2"
   },
   "type": "module"
 }

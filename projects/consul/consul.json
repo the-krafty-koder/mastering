@@ -1,0 +1,11 @@
+{
+  "data_dir": "/data",
+  "client_addr": "0.0.0.0",
+  "ui_config": {
+    "enabled": true
+  },
+  "ports": {
+    "dns": 53
+  },
+  "recursors": ["8.8.8.8"]
+}

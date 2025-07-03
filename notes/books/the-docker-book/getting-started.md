@@ -14,3 +14,4 @@
 `docker top <container_name/id>` - used to check processes running inside a container.
 `docker run --restart=always ubuntu /bin/bash` - used --restart flag to automatically restart containers when they stop because of a failure.
 `docker inspect <container_id>` used to get more info about the container.
+`docker exec -ti nodeapp /bin/bash` - will open a shell inside a running container

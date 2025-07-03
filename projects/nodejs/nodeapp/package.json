@@ -1,0 +1,18 @@
+{
+  "name": "docker-dev",
+  "version": "0.2.0",
+  "description": "Docker Dev with Redis v4 and Express",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "connect-redis": "^5.2.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.4",
+    "express-session": "^1.17.3",
+    "morgan": "^1.10.0",
+    "redis": "^4.6.7"
+  }
+}

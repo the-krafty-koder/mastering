@@ -10,6 +10,11 @@ The act of protecting websites from unauthorized use, modification, access or di
     ### SQL Injection
     Enables malicious users to execute SQL code into a database, allowing data access / modification.
 
+    How to prevent SQL injection attacks
+    1. Use parameterized queries -> write queries leaving placeholders for where data is supposed to go, and then provide this data elsewhere.
+    2. Use ORMS - abstract away writing raw SQL and handle escaping and parameterization for you.
+    3. Escaping data -> escape special characters while writing SQL queries manually.
+
     ### Cross Site Request Forgery (CSRF)
     Allows a user to mimic another user by using their credentials
 

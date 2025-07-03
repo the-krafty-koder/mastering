@@ -1,0 +1,11 @@
+version: "3"
+services:
+  web:
+    image: omoga/compose-app
+    command: python app.py
+    ports:
+      - "5200:5000"
+    volumes:
+      - .:/compose-app
+  redis:
+    image: redis

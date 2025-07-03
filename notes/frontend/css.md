@@ -77,3 +77,7 @@ Grid properties
 
 4. justify-content - works normally for items in container
 5. align-content - works like align-items for items in container
+
+## Grid item properties
+
+1. grid-template-area ->

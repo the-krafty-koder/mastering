@@ -1,11 +1,11 @@
-import { v4 as uuidv4 } from "uuid";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import { combineResolvers } from "graphql-resolvers";
+import { isAdmin } from "./authorization.js";
 
-import { UserInputError } from "apollo-server-express";
-
-const createToken = ({ id, email, username }, secret, expiresIn) => {
-  return jwt.sign({ id, email, username }, secret, expiresIn);
+const createToken = ({ id, email, username, role }, secret, expiresIn) => {
+  return jwt.sign({ id, email, username, role }, secret, {
+    expiresIn,
+  });
 };
 
 export default {
@@ -37,17 +37,32 @@ export default {
       const user = await models.User.findByLogin(login);
 
       if (!user) {
-        throw new UserInputError("No user found with these credentials");
+        throw new GraphQLError("No user found with these credentials", {
+          extensions: {
+            code: "BAD_USER_INPUT",
+          },
+        });
       }
 
       const isValid = await user.validatePassword(password);
 
       if (!isValid) {
-        throw new AuthenticationError("Invalid password.");
+        throw new GraphQLError("Invalid password.", {
+          extensions: {
+            code: "UNAUTHENTICATED",
+          },
+        });
       }
 
       return { token: createToken(user, secret, "30m") };
     },
+    deleteUser: combineResolvers(
+      isAdmin,
+      async (parent, { id }, { models }) => {
+        await models.User.destroy({ where: { id } });
+        return true;
+      }
+    ),
   },
 
   User: {

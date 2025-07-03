@@ -1,4 +1,9 @@
 import userResolvers from "./users.js";
 import messageResolvers from "./messages.js";
+import { DateTimeResolver } from "graphql-scalars";
 
-export default [userResolvers, messageResolvers];
+export default [
+  { DateTime: DateTimeResolver },
+  userResolvers,
+  messageResolvers,
+];
