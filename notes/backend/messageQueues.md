@@ -87,4 +87,16 @@ A messaging protocol that enables conforming client applications to communicate 
          Polling ("pull API"): this way is highly inefficient and should be avoided in most cases.
 
 N/B
-A Dead Letter Queue (DLQ) is a special queue used in message-oriented middleware systems like RabbitMQ, Kafka, or AWS SQS to handle messages that cannot be processed successfully. It acts as a safety net, capturing messages that would otherwise be lost or repeatedly cause errors.
+A Dead Letter Queue (DLQ) is a special queue used in message-oriented middleware systems like RabbitMQ, Kafka, or AWS SQS to handle messages that cannot be processed successfully. It acts as a safety net, capturing messages that would otherwise be lost or repeatedly cause errors.jn
+
+# Asynchronous Result Handling
+
+After a background worker finishes a task, the system needs to deliver the result. There are three main strategies:
+
+Polling (Store-and-Retrieve) – Worker saves the result (e.g. in a DB or Redis), and the client checks status via a /status/:job_id endpoint.
+
+Webhooks/Callbacks – The worker calls a client-provided URL with the result when done. Good for real-time updates.
+
+Pub/Sub or WebSockets – The worker publishes a message to a channel (e.g. Redis, Kafka), and subscribers (like the frontend) get notified instantly.
+
+Use task IDs to track jobs. Persist results if you need retries, audits, or historical access. For short-lived data, Redis often works well.

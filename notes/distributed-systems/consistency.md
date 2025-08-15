@@ -20,57 +20,7 @@
 3. Eventual consistency
    Lacking write-write conflicts, all replicas will converge towards identical copies of each other.
 
-## Client centric consistency models
-
-Provides guarantees for a single client concerning the consistencies of access to a data store by that client. No guarantees are given concerning concurrent accesses by different clients. Solves the problem that users may sometimes operate on different replicas, while updates have not been fully propagated.
-
-1. Monotonic reads
-   If a process reads the value of data item x, any successive read operation on x by that process will always return the same value or a more recent value.
-
-2. Monotonic writes
-   A write operation by a process on a data item x is completed before any successive write operation by the same process, regardless where the successive write operation takes place.
-
-3. Read your writes
-   The effect of a write operation by a process on data item x will always be seen by a successive read operation on x by the same process. In other words, a write operation is always completed before a successive read operation by the same process, no matter the location where that read operation takes place.
-
-4. Writes follow reads
-   Any successive write operation by a process on a data item
-   x will be performed on a copy of x that is up to date with the value most recently read by that process.
-
-# Replica management
-
-Involve finding the best location for servers and finding the best servers to place content.
-
-1. Finding best server location
-
-- Use quality of service
-- Use consistency awareness - placement of servers will then involve costs for keeping replicated content up to date.
-- Use energy metrics - decided based on energy consumption.
-
-2. Content distribution
-
-- Design concern - what actually needs to be propagated to other servers?
-
-  1. Notification about an update operation
-     It is what invalidation protocols do. Copies are informed that an update has taken place and the data they hold is invalid. Main advantage is that they use little network bandwidth. The only information that needs to be transferred is a specification of which data are no longer valid.
-
-  2. Propagating updated data
-     Useful when read-write ratio is relatively high
-
-  3. Propagating update operation with values to update
-     Tell each replica which update operation it should perform (and sending only the parameter values that those operations need).
-
-- Push vs Pull based protocols
-  In a push-based approach, also referred to as server-based protocols, updates are propagated to other replicas without those replicas even asking for the updates. Often used between permanent and server-initiated replicas
-
-  In a pull-based approach, a server or client requests another
-  server to send it any updates it has at that moment. Pull-based protocols, also called client-based protocols, are often used by client caches.
-
-# Consistency protocols
-
-Implementation of consistency models
-
-# Implementing data centric consistency models
+# Implementing data centric consistency models (consistency protocols)
 
 ## Sequential consistency: Primary based protocols
 
@@ -116,7 +66,24 @@ A different approach to support replicated writes is to use voting. Requires cli
 
 To read a file of which N replicas exist, a client needs to assemble a read quorum, an arbitrary collection of any Nr servers, or more.Similarly, to modify a file, a write quorum of at least Nw servers is required
 
-# Implementing client-centric consistency.
+## Client centric consistency models
+
+Provides guarantees for a single client concerning the consistencies of access to a data store by that client. No guarantees are given concerning concurrent accesses by different clients. Solves the problem that users may sometimes operate on different replicas, while updates have not been fully propagated.
+
+1. Monotonic reads
+   If a process reads the value of data item x, any successive read operation on x by that process will always return the same value or a more recent value.
+
+2. Monotonic writes
+   A write operation by a process on a data item x is completed before any successive write operation by the same process, regardless where the successive write operation takes place.
+
+3. Read your writes
+   The effect of a write operation by a process on data item x will always be seen by a successive read operation on x by the same process. In other words, a write operation is always completed before a successive read operation by the same process, no matter the location where that read operation takes place.
+
+4. Writes follow reads
+   Any successive write operation by a process on a data item
+   x will be performed on a copy of x that is up to date with the value most recently read by that process.
+
+# Implementing client-centric consistency (consistency protocols).
 
 Implementing it is very straightforward if perfomance issues are ignored.
 
@@ -146,3 +113,32 @@ Implemented by first bringing the selected server up to date with the write oper
 
 N/B
 Query containment check - whether data from a query can be satisfied by a local copy of the data in an edge server
+
+# Replica management
+
+Involve finding the best location for servers and finding the best servers to place content.
+
+1. Finding best server location
+
+- Use quality of service
+- Use consistency awareness - placement of servers will then involve costs for keeping replicated content up to date.
+- Use energy metrics - decided based on energy consumption.
+
+2. Content distribution
+
+- Design concern - what actually needs to be propagated to other servers?
+
+  1. Notification about an update operation
+     It is what invalidation protocols do. Copies are informed that an update has taken place and the data they hold is invalid. Main advantage is that they use little network bandwidth. The only information that needs to be transferred is a specification of which data are no longer valid.
+
+  2. Propagating updated data
+     Useful when read-write ratio is relatively high
+
+  3. Propagating update operation with values to update
+     Tell each replica which update operation it should perform (and sending only the parameter values that those operations need).
+
+- Push vs Pull based protocols
+  In a push-based approach, also referred to as server-based protocols, updates are propagated to other replicas without those replicas even asking for the updates. Often used between permanent and server-initiated replicas
+
+  In a pull-based approach, a server or client requests another
+  server to send it any updates it has at that moment. Pull-based protocols, also called client-based protocols, are often used by client caches.

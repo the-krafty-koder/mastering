@@ -1,6 +1,6 @@
 Schema statements - statements used to create database objects (tables, indexes, constraints )
 Data statements - statements used to create, manipulate and retrieve the data stored in a database.
-Transaction statements - used begin, end and rollback transactions.
+Transaction statements - used to begin, end and rollback transactions.
 
 - The number of rows that a table may contain is more a matter of physical limits (i.e., how much disk drive space is available) and maintainability (i.e., how large a table can get before it becomes difficult to work with) than of database server limitations.
 

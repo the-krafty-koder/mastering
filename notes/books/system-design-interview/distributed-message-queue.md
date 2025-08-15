@@ -65,7 +65,13 @@ We divide a topic into partitions and deliver messages evenly across partitions.
 
     1. Push model
        Adv. - low latency
-       Disadv - if rate of consumption falls below rate of production, consumers can be overwhelmed. Also, it is difficult to deal with consumers of different processing power because the brokers control the rate at which data is transferred.
+       Disadv - if rate of consumption falls below rate of production, consumers can be overwhelmed (backpressure). Also, it is difficult to deal with consumers of different processing power because the brokers control the rate at which data is transferred.
+
+       How to solve for backpressure
+
+       1. Rate limit producers. Also send acknowledgements before next batch is sent.
+       2. Scale out consumers by adding more instances.
+       3. Use buffers to absorb spikes
 
     2. Pull model
        Adv - consumers control the rate of consumption. Also, if rate of consumption falls below rate of production, consumers can be scaled.Also more suitable for batch processing.

@@ -89,10 +89,6 @@ When data is requested, application first checks the cache. If cache miss, data 
 
 Cache management is left for the cache itself. On request, if data is available it is returned, else the cache itself fetches the data from source and stores it in cache for future use, before returning the data to client.
 
-### Refresh ahead
-
-Proactively retrieves data from the source before it is requested. Cache anticipates the need for future events before it is retrieved.
-
 ### Write through
 
 Data is written to both the cache and the underlying data source simultaneously. Data is first written to the cache then propagated to the data source before the write operation is considered complete
@@ -104,3 +100,7 @@ Involves bypassing the cache and writing directly to the underlying data source.
 ### Write back
 
 Write operations are perfomed directly on the cache. Data is updated to db at a later time. we delay the propagation of updates by allowing multiple writes to take place before informing the servers. The update is eventually propagated to the data source asynchronously on a schedule or when specific conditions are met (e.g., cache eviction or time intervals)
+
+### Refresh ahead
+
+Proactively retrieves data from the source before it is requested. Cache anticipates the need for future events before it is retrieved.

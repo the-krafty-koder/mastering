@@ -45,7 +45,7 @@ Use `docker history <imageid>` to drill into how an image was created.
 
 ## CMD
 
-- Specifies the command to run when the container is launched. Similar to run, but instead of running a command when the container is being built, it runs the command when container is launched. You can only specify one CMD instruction per Dockerfile
+- Specifies the command to run when the container is launched. Similar to `RUN`, but instead of running a command when the container is being built, it runs the command when container is launched. You can only specify one CMD instruction per Dockerfile
 
 `CMD ["bin/bash", "-l]`
 

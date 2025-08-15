@@ -20,6 +20,11 @@ N/B
 Docker compose - allows you to run stacks of containers to represent application stacks, eg web server, app server and db server.
 Docker swarm - allows you to create clusters of containers, called swarms to run scalable workloads.
 
+Difference
+
+- Docker compose is for running multiple containers on a single host. Used for local development or simple single-host deployments.
+- Docker swarm is an orchestration tool for turning multiple hosts into a single cluster
+
 # Docker uses
 
 1. Making local development workflow faster.

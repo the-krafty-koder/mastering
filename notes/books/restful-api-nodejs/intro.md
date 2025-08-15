@@ -88,3 +88,17 @@
 
 4. Scaling and perfomance
    Scaling applications that have a state is difficult.
+
+# Best practices for RESTFUL API Design
+
+1. Proper naming of resource paths.
+2. Represent actions as CRUD operations
+3. Return meaningful status codes.
+4. Use caching and pagination to improve perfomance.
+5. Use proper versioning mechanisms
+
+# How to handle API Versioning
+
+1. Use version identifiers in APIs or URLs
+2. Give each version a long lifespan to identify weaknesses in its design.
+3. Provide thorough documentation

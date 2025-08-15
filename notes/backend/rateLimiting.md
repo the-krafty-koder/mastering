@@ -10,11 +10,12 @@ A technique that allows a service to control the consumption of resources used b
 
 # Rate limiting techniques
 
-1. Fixed window - clients are allowed a specific number of requests within a time window
+1. Fixed window counter - clients are allowed a specific number of requests within a time window. Each request increments counter by one. Once counter reaches the threshold, requests are dropped until a new time window starts.
 
    Advantages
    Simple and easy to implement
    Allow burst request as long as threshold is not exceeded.
+   Memory efficient
 
    Disadvantages
    Requests can exceed threshold at window boundaries.
@@ -44,6 +45,8 @@ A technique that allows a service to control the consumption of resources used b
    Advantages
    Allows for short bursts of traffic (when tokens are available)
    Useful for systems that experience irregular traffic patterns.
+   The algorithm is easy to implement.
+   Memory efficient.
 
    Disadvantages
 
@@ -60,6 +63,7 @@ A technique that allows a service to control the consumption of resources used b
    Advantages
    Simple to implement
    Allows for stable traffic control
+   Memory efficient given the limited queue size.
 
    Disadvantages
    Lacks flexibility in handling traffic spikes
@@ -86,4 +90,7 @@ A technique that allows a service to control the consumption of resources used b
         2. Exponential backoff with jitter -  add randomness to exponential backoff to prevent clients from retrying at the same time.
 
         Good to have a retry limit (3-5)
-    2. There is need to be fault tolerant
+     2. Use client cache to avoid frequent API calls.
+     3. Understand the limit and do not send many requests in a short time.
+     4. Include code to catch exceptions so clients can gracefully exit.
+     5. There is need to be fault tolerant

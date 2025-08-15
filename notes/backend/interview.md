@@ -19,7 +19,7 @@ Rate limiting and throttling Done
 
 Horizontal and vertical scaling Done
 
-Load balancing and proxies
+Load balancing and proxies Done
 
 Asynchronous processing (queues, workers) Done
 

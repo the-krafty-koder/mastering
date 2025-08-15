@@ -20,7 +20,7 @@ Summary of the fanout service:
 
 1. Fetch friend IDs from a graph database optimized for managing relationships.
 2. Retrieve and filter friend info from the user cache, respecting user settings (e.g. mutes, selective sharing).
-3. Send friend list and post ID to a message queue.
+3. Send friend list and post ID that has just been saved to a message queue.
 4. Fanout workers process the queue and update the news feed cache with <post_id, user_id> pairs, storing only IDs to conserve memory.
 5. News feed cache holds a limited number of recent post-user mappings, optimizing for low cache miss rates.
 

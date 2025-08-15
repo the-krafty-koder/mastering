@@ -47,7 +47,7 @@ A single line of execution within a program
 
     1. Pipes
     2. Message queues
-    3. Shared segments
+    3. Shared memory segments
 
 # Threads in distributed systems
 
@@ -100,3 +100,16 @@ It is organized into 3 layers, a logical switch for routing requests,application
     Local area clusters - machines which are connected via a LAN
 
     Wide area clusters - collection of machines scattered all over the internet. An advantage for this is locality - providing users with data thats closest to them.
+
+# Containerzation vs Virtualization
+
+Virtualization and containerization are ways to run many applications on one physical machine.
+
+Virtualization uses virtual machines (VMs), which each run a full operating system and have their own kernel. This gives strong isolation and lets you run different OSes, like Linux and Windows, on the same host. But VMs are heavy, slow to start, and use a lot of resources.
+
+Containerization is lighter and faster. Containers share the host operating system’s kernel but keep apps separate using namespaces and cgroups. They start quickly, take little space, and let you run more workloads on the same machine.
+
+VMs are better when you need strong isolation or different operating systems.
+Containers are better when you need speed, efficiency, and to run many apps at once.
+
+In short: VMs act like full computers, containers act like isolated apps sharing the same OS.

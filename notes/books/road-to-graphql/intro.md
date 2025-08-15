@@ -8,7 +8,7 @@ An open source query language. It allows request for specific data, giving clien
 
 1. Declarative data fetching -> the client selects data along with its entities with fields across relationships in one request. For example an author with articles in a 1: many r/ship. In REST it would require to fetch request to obtain both but in GQL only 1 request is required.
 
-2. Prevents overfetching -> GraphQL prevents overfetching by allowing clients to request only the specific data fields they need, unlike REST APIs where fixed endpoints often send extra unnecessary data. This optimizes data usage, especially for mobile apps.
+2. Prevents overfetching -> GraphQL prevents overfetching by allowing clients to request only the specific damnecessary data. This optimizes data usage, especially for mobile apps.
 
 3. Framework agnostic -> Can be used across a variety of JS frameworks.
 

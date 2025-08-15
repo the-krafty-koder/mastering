@@ -37,6 +37,14 @@ API Servers - user signup, feed recommendation, video metadata
 4. API servers inform client that video is ready for streaming.
 5. While file is being uploaded to original storage, client in parallel sends a request to update video metadata via API Servers.
 
+# Video download flow
+
+                Client
+                   |
+                   |  (obtain URLS from API servers and stream from CDN)
+                   >
+                  CDN
+
 # System improvements
 
 1. Speed optimization -> parallel video uploading. Split a video into smaller chunks by GOP alignment. The job of spitting can be implemented by a client to fasten upload speeds.

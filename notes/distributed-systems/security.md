@@ -3,8 +3,8 @@ Security policy - describes which actions entities in a system can take and whic
 Security mechanisms - how a security policy can be enforced. The following are the most important
 
 1. Encryption - transforming data into something an attacker cannot understand.
-2. Authorization - verifying the claimed identity of a user
-3. Authentication - checking if the user has the permissions to perform a requested action.
+2. Authorization - checking if the user has the permissions to perform a requested action.
+3. Authentication - verifying the claimed identity of a user
 4. Monitoring and auditing - used to trace access to assets and recording what has happened.
 
 # Design issues

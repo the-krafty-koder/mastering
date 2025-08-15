@@ -103,6 +103,7 @@ c: Data node -> stores actual object data. Replication is done to ensure durabil
 4. Primary saves data, replicates to 2 secondary nodes.
 5. Once replication succeeds, UUID is returned to API.
 
+- Data is stored as files on physical drives inside data nodes.
 - Placement service uses consistent hashing to deterministically map UUID to a replication group, even as groups change.Primary node waits for all replicas before responding, ensuring strong consistency. Strong consistency increases latency, as response depends on the slowest replica.
 
 ## How data is organized
@@ -118,3 +119,44 @@ c: Data node -> stores actual object data. Replication is done to ensure durabil
   2. Relational DB: slower writes, fast reads (better for write-once, read-many).
 - Mapping is local to each node, so no need for a shared DB.
 - Solution: use SQLite on each node — lightweight, file-based, and easy to manage.
+
+# Durability
+
+Data reliability is extremely important.
+
+1. Hardware failure
+
+   - Replicate data across multiple hard drives, preferably 3.
+   - Instead of just replicating data (like 3x replication), data is split, encoded, and stored across multiple nodes so it can be reconstructed even if some parts are lost.
+
+2. Data corruption - use a checksum algorithm eg MD5 on the data before and after
+   transmission to verify correctness.
+
+# Metadata data model
+
+Database schema needs to support:
+
+    1. Finding object id by object name.
+    2. Inserting and deleting object based on object name.
+    3. List objects in a bucket sharing the same prefix.
+
+- Usually a limit on how many buckets a user can have.Spread read request load on the bucket table amongst multiple db servers.
+- Shard the object table
+
+# Object versioning
+
+- To support versioning, the object table for the metadata store has a column called
+  object_version that is only used if versioning is enabled. Instead of overwriting the existing record, a new record is inserted with the same bucket_id and object_name as the old record, but with a new object_id and object_version.
+- When we delete an object, all versions remain in the bucket and we insert a delete marker.
+- A delete marker is a new version of the object, and it becomes the current version of the object once inserted. Performing a GET request when the current version of the object is a delete marker returns a 404 Object Not Found error.
+
+# Optimizing upload of large files
+
+- Use a multipart upload. Slice a large object into smaller parts and upload independently. After all the parts are uploaded, the object store re-assembles the object from the parts.
+
+# Garbage collection
+
+- Process of automatically reclaiming storage space no longer used. Few things can cause this:
+  1. An object is marked as deleted via a delete marker without actually being deleted.
+  2. Orphan data - half uploaded multipart uploads.
+  3. Corrupted data - data that failed checksum verification.

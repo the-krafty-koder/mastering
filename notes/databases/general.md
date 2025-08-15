@@ -37,3 +37,14 @@ That’s 11 total queries instead of just 2.
    Wrap database calls in a loader that batches and caches requests automatically.
 
    `const userLoader = new DataLoader((keys) => batchUsers(keys, models));`
+
+# ACID vs BASE
+
+      Property            SQL                     NoSQL
+
+      Consistency         ACID transactions       BASE (Basically Available, Soft
+                                                  state,Eventual)
+      Schema              Strict, predefined      Flexible or dynamic
+      Scaling             Vertical                Horizontal
+      Joins               Native joins            Usually manual or avoided
+      Transactions        No support              Some NoSQLs support it (Mongo,    DynamoDB)
