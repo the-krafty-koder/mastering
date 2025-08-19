@@ -16,23 +16,22 @@ Basic
     Receiver
 
     Detailed
-                                            User
-                                            |
-                                            |
-                                http        |     websockets
-                            ------------------ ------------------
-                            |                                    |
-                            |                                    |
-                        Load balancer                            |
-                            |                                    |
-                            |                                    |
-                            |                                    |
-                            |                                    |
-            Notification --------- API Servers <->     Chat server Presence servers
-            servers         |                                    |
-                            |                                    |
-                            |                                    |
-                            ------------> KV store <--------------
+                                        User
+                                        |
+                                        |
+                            http        |     websockets
+                        ------------------ ------------------
+                        |                                    |
+                        |                                    |
+                    Load balancer                            |
+                        |                                    |
+                        |                                    |
+                        |                                    |
+                        >                                    >
+        Notification --------- API Servers <-> Chat & Presence servers
+           servers      |                                    |
+                        |                                    |
+                        ------------> KV store <--------------
 
 • Chat servers facilitate message sending/receiving.
 • Presence servers manage online/offline status.
