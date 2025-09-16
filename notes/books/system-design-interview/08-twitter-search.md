@@ -27,16 +27,16 @@
                                 |
                                 |
         Indexing <--- MQ <-- Tweet service <--------> Search service
-        service                |                         >
+        service                |
            |                 -- ----                     |
            |                 |       |                   |
-           |             Tweet DB  Redis Cache           |
+           |             Tweet DB  Redis Cache           | tweet IDs
            |                                             |
            >                                             |
-        Elastic search ----------------------------------
+        Elastic search <----------------------------------
 
 1. Indexing service
-   The indexing service uses an inverted index to map a word to a list of words containing that tweet. It does the following:
+   The indexing service uses an inverted index to map a word to a list of tweets containing that word. It does the following:
 
    1. Listen for new tweets from the message queue.
    2. Process the raw tweet data (tokenizing text, extracting hashtags, etc.).
