@@ -23,3 +23,19 @@ Organizing data to reduce redundancy and maintain data integrity.
 3rd Normal form
 
 - States that each non-key column must be dependent on the primary key and nothing but the primary key.
+
+# Denormalisation
+
+- Used to add redundant data to one or more tables to avoid costly joins.
+
+Advantages
+
+- Improved query performance
+- Reduced complexity
+- Easier maintenance and updated because of reduced number of tables.
+- Improved read performance since it is easier to access data.
+
+Disadvantages
+
+- Redundant data is added which can lead to inconsistencies and reduced data integrity.
+- Increased storage requirements.

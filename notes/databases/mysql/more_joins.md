@@ -22,3 +22,11 @@ FROM
 FROM customer
 ) cust
 NATURAL JOIN rental r;
+
+# LEFT JOIN
+
+Returns all rows from the left table, and the matched rows from the right table.
+
+# RIGHT JOIN
+
+Returns all rows from the RIGHT table, and the matched rows from the LEFT table.

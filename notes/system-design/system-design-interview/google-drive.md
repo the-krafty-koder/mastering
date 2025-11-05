@@ -18,7 +18,7 @@
                     >
                 API Servers
                     |
-        Metadata <-----------> File storage
+        Metadata <-----------> Metadata cache
         DB
 
 Block servers - upload blocks to cloud storage

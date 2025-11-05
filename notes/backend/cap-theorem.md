@@ -16,4 +16,4 @@ You must choose 2:
 
 1. Strong consistency - after a write, all reads reflect that write.
 2. Eventual consitency - reads might return stale data, but if no new writes occur, all replicas eventually sync.
-3. Causal consistency - Writes that are causally related are seen by all nodes in the same order.
+3. Causal consistency - Writes that are causally related are seen by all nodes in the same order. That is if one operation could have influenced another, everyone must see them in that same order.

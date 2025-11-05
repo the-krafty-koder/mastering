@@ -165,3 +165,12 @@ type MyEvent<T = HTMLElement> = {
     type: string
 }
 ```
+
+# Index signatures
+
+- Lets you define the shape of objects when you dont know all the property names ahead of time.
+
+`interface Use {
+    [username: string]: number
+}
+`

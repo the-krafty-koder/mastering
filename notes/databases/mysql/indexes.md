@@ -36,7 +36,9 @@ ADD INDEX id_email (email);
 
 ## Disadvantages of an index
 
-Every index is a special kind of table . Therefore, every time a row is added to or removed from a table, all indexes on that table must be modified.
+- Every index is a special kind of table . Therefore, every time a row is added to or removed from a table, all indexes on that table must be modified.
+- Increased storage space as they require additional storage
+- Determining the appropriate index can be challenging.
 
 ## Useful tips
 

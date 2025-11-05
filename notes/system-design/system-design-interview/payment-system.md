@@ -21,7 +21,7 @@ Build a backend payments system for an ecommerce site like Amazon.
             2           |           3
     DB  <------ Payment service  ------> Payment executor -----> PSP (Stripe, Adyen)
                         |                       |                           |
-                --------- ----------            DB                          |
+               --------- ----------             DB                          |
             |                    |                                   Settlement file
         Ledger                 Wallet                                       |
             |                    |                                          |
@@ -105,7 +105,7 @@ In most cases, companies decide to use hosted payment pages so as not to store s
     5. Client then displays the PSP hosted payment page.
     6. User fills in the payment details then clicks pay button. The PSP starts payment processing.
     7. PSP returns the payment status and the webpage is redirected to the redirect URL.
-    8. Asynchoronously PSP calls the payment service with the payment status.s
+    8. Asynchoronously PSP calls the payment service with the payment status eg by message queue or webhooks
 
 2. Reconciliation
 

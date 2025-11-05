@@ -17,7 +17,7 @@
 1. Components
 
 Ingest
-Broadcasters send video to the Ingest Server using protocols like RTMP, SRT, or WebRTC. Real time messaging protocol (RMTP) is best because it is supported by most broadcasters.
+Broadcasters send video to the Ingest Server using protocols like RTMP, SRT, or WebRTC. Real time messaging protocol (RTMP) is best because it is supported by most broadcasters.
 The ingest cluster should be distributed geographically to minimize latency for streamers.
 
 Transcoding / Encoding

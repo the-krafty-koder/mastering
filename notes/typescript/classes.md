@@ -40,7 +40,7 @@ class Bishop extends Piece
 
 A way to name a type so you dont define it inline.
 
-Types va Interfaces
+Types vs Interfaces
 
 1. Types are more general. Their right hand side can be any type including a type expression . For an interface, their righthand side must be a shape. There is no way to write the following as an interface.
    ```
@@ -80,7 +80,7 @@ Difference is that interfaces are more general while abstract classes are more s
 
 # Nominal typing vs Structural typing vs Duck typing
 
-1. Nominal
+1. Nominalord
    Type compatibility is based on explicit declarations and type names. Eg even if 2 classes have the same structure , they are not compatible unless one explicitly extends or implements the other. Used in Java, C#, Swift.
 
 2. Structural
@@ -132,4 +132,30 @@ class MyMap<K, V> {
 
 # Mixins
 
-They are ways to implement multiple inheritance
+A class containing methods that can be used by other classes without a need to inherit from it.
+
+```
+//
+
+export class Vehicle {
+    startEngine() {
+        console.log('Engine started!')
+    }
+}
+
+export const RadioMixin = {
+    sendMessage() {
+        console.log('Sent a message!')
+    }
+}
+
+export class Airplane extends Vehicle {
+
+}
+
+Object.assign(Airplane.prototype, RadioMixin)
+
+export default Airplane
+```
+
+There’s no inheritance, but a simple method copying. So Airplane may inherit from another class and also include the mixin to “mix-in” the additional methods, like this:

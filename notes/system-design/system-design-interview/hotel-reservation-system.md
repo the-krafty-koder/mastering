@@ -8,7 +8,7 @@
 # Non-functional requirements
 
 1. Should support high concurrency
-2. Moderate latency ( acceptable if system takes a few seconds to make the booking)
+2. Moderate latency (acceptable if system takes a few seconds to make the booking)
 
 # Data model
 

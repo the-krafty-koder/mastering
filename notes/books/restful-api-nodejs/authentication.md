@@ -4,8 +4,8 @@ User sends login credentials (e.g. email + password).
 Server authenticates the user.
 Server generates a JWT:
 Encodes the header and payload.
-Signs it using a secret (for HMAC) or private key (for RSA).
-Server returns the JWT to the client.
+Signs encoded header+payload using a secret (for HMAC) or private key (for RSA).
+Server returns the JWT(encodedheader.encodedpayload.signature) to the client.
 
 🗂 2. Token Storage
 Client stores the token (usually in localStorage, sessionStorage, or an HTTP-only cookie).
@@ -16,7 +16,8 @@ Authorization: Bearer <token>
 When the server receives a request with a JWT:
 Extract the token from the request header.
 Split the token into header, payload, and signature.
-Recalculate the signature using the header + payload and the same secret (or public key if RSA).
+Decode the header + payload.
+Recalculate the signature using the decoded header + payload and the same secret (or public key if RSA).
 Compare the recalculated signature with the one in the token.
 If they match, the token is untampered.
 Check exp claim to ensure the token hasn’t expired.

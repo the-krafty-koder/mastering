@@ -43,26 +43,21 @@ Resource Server – Hosts the user’s data and checks access rights.
 Authorization Server – Issues access tokens to clients after verifying the user's consent.
 
 Authorization Flow
-The client registers with the authorization server and gets a unique ID (cid).
-To request access, it sends [cid, R, H(S)], where R is the rights requested and H(S) is a hash of a secret S.
-If the user (Alice) isn’t logged in, she must authenticate and approve the request.
-The server then sends back a temporary authorization code (AC).
-The client uses [cid, AC, S] to exchange it for an access token (AT).
-The server checks H(S) matches the earlier request, confirming it's the same client, and gives it an access token.
+
+1. The user initiates the flow by doing something like clicking a button (hosted by the app) to connect and share their Google Calendar.
+2. The app sends an authorization request to the authorization server.
+3. The authorization server redirects the user to authenticate and agree with granting the app the permissions it asked for (e.g., view your Google Calendar).
+   Upon successful authentication, the user grants permission.
+4. The authorization server generates an authorization code and sends it back to the app, as the response of the authorization request initiated in step 2.
+5. The app sends a new request to the authorization server, providing as input the authorization code and asking for an access token in return.
+6. The authorization server verifies the code and generates an access token (and optionally a refresh token).
+7. With the access token, the app can request resources from the resource server.
 
 OAuth 2.1 defines two types of access tokens:
 
 1. Opaque tokens – Simple identifiers; the resource server must contact the authorization server to verify the client's access rights each time the token is used.
 
 2. Self-contained (signed) tokens – Tokens that embed all access rights directly and are signed by the authorization server; they include an expiration time and don’t require the resource server to check back with the authorization server.
-
-# Simpler version
-
-OAuth 2.0 is an authorization framework that lets third-party applications access a user's data from another service without requiring the user's password. It’s not authentication by itself, but it is often used for login when combined with OpenID Connect.
-
-In this flow, the user is redirected to the authorization server (e.g., Google) to log in and approve access. The server then redirects back to the app with an authorization code. The app exchanges this code for an access token (and optionally a refresh token). The access token is then used to access protected resources via API.
-
-Access tokens are short-lived, and refresh tokens can be used to get new ones without user interaction. Tokens must be kept secure and are sent with API requests using the Bearer scheme.
 
 # Session based authentication
 

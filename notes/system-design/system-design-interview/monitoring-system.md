@@ -100,3 +100,28 @@ To make the query service more perfomant, add a cache layer to reduce hits on th
 4. The alert store is a K,V database that keeps the state of all alerts.
 5. Eligible alerts are inserted into Kafka
 6. Alert consumers process events from Kafka and send notifications to different channels.
+
+# 4 golden signals of monitoring
+
+1. Latency
+2. Traffic
+3. Errors
+4. Saturation - how full your service is.
+
+# Ways to alert on significant events
+
+1. Target error rate > SLO Threshold
+
+- Alerts if error rate over a window exceeds the SLO rate.
+
+2. Increased alert window
+   Increase the size of the alert window described above to improve effectiveness.
+3. Alert on Burn rate
+
+- Introduce a burn rate to reduce the size of the window while keeping the alert budget spend constant.
+
+4. Mulitle burn rate alerts
+
+- Use multiple burn rates and fire alerts when burn rates pass a threshold.
+
+5. Multi-window multi-burn rate alerts

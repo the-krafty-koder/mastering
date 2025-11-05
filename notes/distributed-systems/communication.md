@@ -16,7 +16,7 @@
    9. The client’s OS gives the message to the client stub.
    10. The stub unpacks the result and returns it to the client.
 
-   The function of the client stub is to take parameters, pass them into a message and pass it to a server stub. The process of packing parameters is called parameter marshalling.
+   The function of the client stub is to take parameters, parse them into a message and pass it to a server stub. The process of packing parameters is called parameter marshalling.
 
    Variations of RPC
 
@@ -28,3 +28,28 @@
       Sending an RPC request to a group of servers, who subsequently process the requests in parallel. When done the result is returned to the client where the callback takes place.
 
 2. Message Queues
+
+- Read MQ notes
+
+# Protocol buffers (Protobuf)
+
+A serialization format for storing data to send across a network.It is strongly typed.You start by defining a schema in a .proto file. The file is then compiled to data classes in a given language.
+
+Advantages
+
+1. Smaller payload because encoding is more efficient.
+2. Fast serialization/deserialization
+3. Type safety
+4. Wide language support
+
+JSON Advantages
+
+1. Human readable
+2. Widely supported
+3. Flexible schema - format of your data doesnt have to be defined in advance.
+4. Huge amount of tooling available.
+
+JSON Disadvantages
+
+1. Results in large payload sizes.
+2.

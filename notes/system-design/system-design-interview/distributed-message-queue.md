@@ -24,7 +24,7 @@
                                 |
                                 |
                                 <
-    Producer ----> Message Queue(Data storage) <--> Consumer(consumer groups)
+    Producer ----> Message Queue(Data storage nodes) <--> Consumer(consumer groups)
 
 # Messaging models
 
@@ -86,5 +86,13 @@ We divide a topic into partitions and deliver messages evenly across partitions.
 # Data delivery semantics
 
 1. At most once - messages will be delivered not more than once. Messages may be lost but are not redelivered. Suitable where a small amount of data loss is acceptable eg monitoring systems.
+   How to implement
+   1. No retries on failure
+   2. Send and forget from producer
 2. At least once - it is acceptable to deliver a message more than once but no message should be lost. Good for use cases where data duplication is not a big issue
+   How to implement
+   1. Retry on failure
+   2. Acknowledgements
 3. Exactly once - important when duplication is not acceptable eg payments.
+   How to implement
+   1. Idempotency key with deduplication store (durable record of which messages or requests have already been processed)

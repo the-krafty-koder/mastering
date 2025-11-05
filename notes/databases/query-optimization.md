@@ -17,3 +17,29 @@ Process of making SQL queries run faster and using less resources.
 8. Denormalize when necessary.
 9. Partitioning large tables.
 10. Analyze execution plans.
+11. Using materialised views for data that needs complex joins for aggregation
+
+# Scaling MYSQL
+
+You can scale a db in 3 ways
+
+1. Read volume
+
+- You can optimise reads in a couple of ways
+  a) Complex queries
+
+  - Rewrite complex queries so they take less database load eg rewriting a query to use pagination instead of a retrieving a large amount of data at once.
+  - Slow queries can be caused by absence of indices, inefficient joins, unnecessary columns being requested etc.
+
+  b) High QPS queries
+
+  - Caused by lots of traffic that cause hiqh query per second requests. Fixed by using efficient caching mechanisms.
+
+2. Write volume
+
+- Under a master slave architecture , replication lag can be experienced. Can be fixed by applying parallel writes on replicas instead of the default sequential.
+
+3. Data size
+
+- Having larger tables makes a smaller percentage of the data be stored in memory, thus the rest being stored in disk space.
+- You can reduce table size by changing the data engine from the default InnoDB to RocksDB which has better compression efficiency.

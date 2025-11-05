@@ -42,6 +42,8 @@ The act of protecting websites from unauthorized use, modification, access or di
     2. Web application firewall to ban malicious traffic
     3. Captcha and BOT protection
     4. Use DDOS protection service eg Cloudflare.
+    5. Caching to prevent exhausting the web server.
+    6. Minimising the number of services exposed to the public web.
 
 ## Cross origin resource sharing (CORS)
 
@@ -68,6 +70,8 @@ Used to prevent XSS attacks. A CSP can have other purposes as well, including de
 3. Implement effective caching strategies.
 4. Continous monitoring
 5. Embrace asynchronous programming.
+6. Follow coding conventions
+7. Testing and CI/CD
 
 # TLS and HTTPS
 
@@ -127,3 +131,15 @@ TLS Handshake
 7. Short Expiry for Tokens
    Tokens should expire quickly (e.g., 15–60 minutes).
    Use refresh tokens with longer lifespans when necessary.
+
+# Strict mode JS
+
+- A restricted variant of JS that makes silent errors throw, disallows certain features and helps the engine optimise code.
+- Enabled by use-strict at the top of the file.
+
+1. What changes in strict mode
+
+- Silent errors become thrown errors eg assigning to an undeclared variable.
+- No implicit globals eg x=5 must be let x=5
+- `this` in functions is undefined.
+- Reserved words eg implements, interface, package, private, protected.

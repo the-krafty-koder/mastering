@@ -16,7 +16,7 @@ It is a non-relational DB that stores key-value pairings.
 
 # Single server key value store
 
-- Store key value pairs in a hash table whcih resides in memory. Optimize to fit more data in a single server via:
+- Store key value pairs in a hash table which resides in memory. Optimize to fit more data in a single server via:
   1. Data compression.
   2. Storing only frequently accessed data in memory, the rest on disk.
 - A single server can still reach capacity quickly though, so use distributed server.

@@ -75,3 +75,11 @@ An application built as a single unit. Any changes involve building and deployin
 1. Use an API proxy - provides a single access point for multiple API endpoints
 2. Use API orchestration - an abstraction that connects different micro services to implement new services particular that fits the needs of an application. Example , a frontend combining checkout, cart and product microservice to implement a customer buying a product. Alternatively, the orchestration layer could be used to collect data from various microservice and aggregate it into one response. Orchestration itself could form another layer of the app by living in its own dedicated microservice instead of inside the frontend.
 3. Using a message broker - effective as it decouples senders and receivers of messages, allowing a centralized Pub-Sub system.
+
+# Ensuring availability and reliability
+
+1. Redundancy with load balancing
+2. Automated failover
+3. Graceful shutdown
+4. Fault tolerance
+5. Monitoring and observability

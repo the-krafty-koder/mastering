@@ -68,8 +68,7 @@ Trie DB - persistent storage for the trie. 2 options for storage:
 2. The load balancer routes the request to API servers.
 3. API servers get trie data from Trie Cache and construct autocomplete suggestions for
    the client.
-4. In case the data is not in Trie Cache, we replenish data back to the cache. This way, all
-   subsequent requests for the same prefix are returned from the cache. A cache miss can
+4. In case the data is not in Trie Cache, we replenish data back to the cache. This way, all subsequent requests for the same prefix are returned from the cache. A cache miss can
    happen when a cache server is out of memory or offline.
 
 Optimizations

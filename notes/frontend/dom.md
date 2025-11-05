@@ -42,7 +42,14 @@ You can just listen to the server and it will send you a message when it’s ava
 
 # CSS Specificity
 
-Inline styles > Id > Classes and pseudoclasses > Element
+Inline styles > Id > Classes and pseudoclasses > Attributes > Element
+
+# Combinators
+
+A b -> selects all descendants of A whether child or subchild
+A > b -> selects all DIRECT descendants of A that are A, not subchild
+A + b -> selects all adjascent siblings (selects the next b that comes immediately after A)
+A ~ b -> selects general siblings (all b that exists after A)
 
 # Responsive Design
 

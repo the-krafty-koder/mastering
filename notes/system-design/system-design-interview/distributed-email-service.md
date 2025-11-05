@@ -168,7 +168,7 @@ attachments LIST filename/sizes
 
 # Email deliverability
 
-- Have dedicated IPS to send emails
+- Have dedicated IPs to send emails
 - Classify emails -> send different categories of emails from different IPs.
 - Warm up new email server IPS to build reputation.
 - Ban spammers quickly before they ban reputation.

@@ -22,7 +22,7 @@ Basic
                             http        |     websockets
                         ------------------ ------------------
                         |                                    |
-                        |                                    |
+                        >                                    |
                     Load balancer                            |
                         |                                    |
                         |                                    |
@@ -39,7 +39,7 @@ Basic
 • Notification servers send push notifications.
 • Finally, the key-value store is used to store chat history. When an offline user comes online, she will see all her previous chat history.
 
-For storage , it is better to use KV store because of the large amount of dat and:
+For storage , it is better to use KV store because of the large amount of data and:
 
 1. Allow easy horizontal scaling
 2. They provide low latency to access data.

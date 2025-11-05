@@ -37,7 +37,7 @@ N/B
 Fault tolerance = surviving a punch
 Resilience = recovering from a punch
 
-Zero-downtime restart - the code of an application is updated without affecting its availability.
+Zero-downtime restart - the code of an application is updated without affecting its availability. Implemented by using a load balancer with mulitple instances. Update code in 1 instance and when that instance is ready and healthy, route traffic to that instance and kill off old instance.
 
 # Handling shared state across multiple instances
 
@@ -90,7 +90,7 @@ Used to manage all container instances over the available machines within a clou
     2. It makes sure there is no downtime. If a container instance stops or becomes unresponsive, it will be restarted.
     3. Provides functionalities to support service discovery or load balancing
     4. Provides orchestrated access to durable storage so that data can be persisted as needed.
-    5. Automatic rollouts and rollbacks of apps with zero downtime.
+    5. Automatic rollouts and rollbacks of apps with zero downtime (zero downtime restarts)
     6. Provides secrets storage for sensitive data.
 
 # Decomposition
