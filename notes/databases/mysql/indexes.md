@@ -32,7 +32,48 @@ ADD INDEX id_email (email);
     Useful for columns that contain only a small number of values eg boolean. If you were to build a bitmap index on the customer.active column (boolean), the index would maintain two bitmaps: one for the value 0 and another for the value 1. When you write a query to retrieve all inactive customers, the database server can traverse the 0 bitmap and quickly retrieve the desired rows.
 
 3.  Text indexes
-    Allows users to search for text within documents without having to search the document each time a search request arrives.
+    Allows users to search for text within documents without having to search the document each time a search request arrives. eg GIN and GIST indexes
+
+    # GIN VS GIST indexing in Postgres full text search
+
+    GIN
+
+    - GIN stands for general inverted index. It is designed for data that contains many elements inside a single column, like arrays or ts_vector.
+    - Normally a B-Tree index maps `value -> row` but GIN inverts this mapping to `term -> list of rows containing that term`.
+    - When you run
+
+    ```
+    CREATE INDEX idx_docs_fts ON documents
+    USING GIN (to_tsvector('english', content));
+    ```
+
+    - Postgres:
+
+      1.  Converts each content value into a tsvector.
+      2.  Extracts each lexeme (word stem).
+      3.  Builds an index mapping:
+
+          ```
+          'run' → [row 1, row 4, row 9]
+          'fast' → [row 1, row 7]
+          'stamina' → [row 1, row 3, row 10]
+          ```
+
+      4.  Stores this mapping compactly for quick lookup.
+
+    GIST
+
+    - Stands for Generalised Search Tree. It is a balanced tree index data structure, a framework that can support different types of data, not just text. Think of GiST as a toolkit for building custom indexes.
+    - It is used internally for full-text search, range types, similarity search etc.
+    - GIST organises data hierarchially but ordering depends on closeness or overlap.
+    - When used in full text search, GIN stores same kind of info as GIST but in a tree rather than a mapping (inverted list).
+    - use GIN for full text search and GIST for similarity search.
+
+4.  Hash indexes
+    - A hash index is an index type optimized for exact-match queries (=).
+    - Instead of storing values in sorted order (like a B-Tree), it uses a hash function to convert a column value into a hash code.
+    - This hash code determines which “bucket” the value belongs to.
+    - Each bucket stores pointers to the table rows that have that hash, so the db scans the bucket for rows w ith the exact value (collision resolution) and returns the row(s).
 
 ## Disadvantages of an index
 

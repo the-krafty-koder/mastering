@@ -26,7 +26,7 @@
 
 # How the Accessibility Tree Works
 
-The Browser Parses the DOM
+The Browser Parses the HTML to DOM
 When a web page loads, the browser constructs the DOM Tree (HTML elements).
 
 Semantic Information is Extracted

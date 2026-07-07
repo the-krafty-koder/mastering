@@ -15,11 +15,11 @@
 
 - A comprehensive health-monitoring system enables an operator to drill down through the system to view the health status of subsystems and components
 - Generate raw data required for health monitoring by:
-  1. Tracing execution of user requests.
+  1. Tracing execution of user requests.(tracing)
   2. Logging exceptions, faults and warnings.
   3. Monitoring the health of 3rd party services.
   4. Endpoint monitoring
-  5. Collecting performace information eg background CPU utilisation or network traffic.
+  5. Collecting performace information eg background CPU utilisation or network traffic. (profiling)
   6. Synthetic monitoring - tracking whole user journeys.
 
 # Availability monitoring

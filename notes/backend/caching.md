@@ -65,7 +65,7 @@ LFU evicts the least frequently accessed data item from the cache. It assumes th
 
 ## Cache invalidation ( Read more on this)
 
-Ensures cached data remains consistent with the underlying data source.
+The process of making sure cached data gets updated when the underlying data changes.
 
 ### Active invalidation
 

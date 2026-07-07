@@ -19,7 +19,7 @@
 
 2. Gather performance related data from the optimizer statistics.
 3. Determine the cause of the problem. Some common ones include:
-   1. Ineficciently designed SQL queries ( No joins, executing a subquery for every row)
+   1. Ineficciently designed SQL queries (No joins, executing a subquery for every row)
    2. Suboptimal execution plan - compare execution plans using the query optimizer (which chooses the execution plans)
    3. Missing SQL access structures eg indices and materialized view
    4. Stale optimizer statistics.

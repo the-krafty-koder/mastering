@@ -81,3 +81,11 @@ Grid properties
 ## Grid item properties
 
 1. grid-template-area ->
+
+# Pseudo-classes
+
+- Apply styles on characteristics of elements eg `:hover` and `:active`
+
+# Pseudo-elements
+
+- Apply styles on certain parts of an element eg `::first-letter` of a paragraph

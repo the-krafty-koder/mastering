@@ -1,6 +1,6 @@
 # Hash functions
 
-- A function where you put in a string and get back a number.
+- A function where you put in a string/number and get back a numerical value.
 - A hash function consistently maps a name to the same index.
 - A hash table is effectively a hash function and an array. The hash function receives a string, returns a number which is used as an array index.
 - Hash tables are great when you need to :

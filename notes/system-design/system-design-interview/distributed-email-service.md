@@ -91,7 +91,7 @@ Search store - supports very fast full text searches since it is a distributed d
         |                                   |
         |       Error queue               Retry
         |           |                       |
-    Web server -----> Outgoing ----------> SMTP Outgoing -----> Internet
+    Web server -----> Outgoing ----------> SMTP Outgoing Workers -----> Internet
         |              Queue                    |
         |                                       |
         |                                       |
@@ -119,7 +119,7 @@ User sends email → Request hits load balancer, which checks rate limits.
         |                                                       >               <
          ------> SMTP Server ---> Incoming mail --> Mail ---> Real time       Web
                        |             queue        processing   servers       servers
-                       |                                                        |
+                       |                           workers                      |
                        >                                                        |
                      Metadata  Search store  Attachment   Cache <----------------
                         DB          DB

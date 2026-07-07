@@ -10,7 +10,9 @@ A :> B
 
 # Variance
 
-- Typescript's behavior is as follows, if you expect a shape, you can pass a type with property types that are < their expected types, but not a supertype of their expected types.
+- Typescript's behavior is as follows, if you expect a shape, you can pass a
+  type with property types that are < their expected types,
+  but not a supertype of their expected types.
 - For an object A to be assignable to an object B, each of its properties
   must be <: its corresponding property in B.
 

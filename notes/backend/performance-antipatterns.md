@@ -1,7 +1,7 @@
 # Antipatterns
 
 1. Busy database - occurs when database systems run code eg stored procedures and triggers. Processing should be moved from database to application servers.
-2. Busy frontend - resource intensive tasks can increase the response times for user requests, they should be offloaded to seperate threads
+2. Busy frontend - resource intensive tasks can increase the response times for user requests, they should be offloaded to seperate threads.
 3. Chatty I/O - numerous I/O requests can slow down the system. Fix it by batching requests and sending them as a single request.
 4. Overfetching data - application tries to minimise I/O by fetching all the data it might need. Fixed by selecting only the columns you need from the DB eg by using GraphQL.
 5. Improper instantiation - caused by constantly instantiating a class that brokers a resource. Fixed by using a singleton instance of the class.

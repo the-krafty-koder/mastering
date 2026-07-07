@@ -50,6 +50,7 @@ add.bind(null, 10, 20)()
 This variable is defined for every function, not just methods. It has a different value depending on how you called your object.
 
 - General rule is that `this` will take the value of the thing to the left of the dot when invoking a method.
+  b
 
 # Generator functions
 

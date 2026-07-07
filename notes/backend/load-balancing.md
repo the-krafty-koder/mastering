@@ -40,8 +40,7 @@ Forwards requests from client to servers. It centralizes internal services and p
 
 # Layer 7 vs Layer 4 load balancing
 
-- Layer 4 operates at the transport layer(responsible for end-to-end communication) of the OSI.
-- Layer 4 load balancers make routing decisions based on network level information (IP, port) without looking at actual data packets. This makes them fast and efficient for basic routing but poor for when you want more nuanced routing decisions.
+- Layer 4 operates at the transport layer(responsible for end-to-end communication) of the OSI.Layer 4 load balancers make routing decisions based on network level information (IP, port) without looking at actual data packets. This makes them fast and efficient for basic routing but poor for when you want more nuanced routing decisions.
 - Layer 7 operates at the application layer and makes routing decisions based on the content of data packets, HTTP headers, URLS and cookies.
 
 # When to use Layer 4

@@ -230,3 +230,10 @@ null - no value or empty value
 any - used to turn off type checking
 unknown - safer alternative to any. Value could be anything, but ill check before using. Useful when you don’t know what a value will be, but want to enforce checking before use.
 void - used for functions that dont return a value.
+never - represents values that never occur. Used for functions that throw errors or infinite loops.
+
+# Conditional types
+
+- Creates types that depend on conditions, enabling advanced type manipulation.
+
+`type IsString<T> = T extends string ? true : false;`

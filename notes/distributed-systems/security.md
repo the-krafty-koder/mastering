@@ -247,3 +247,39 @@ Types of Firewalls
 1. Signature based - patterns of known network-level intrusions have been collected against which a new pattern is matched. If there is a match, security operators are warned that an intrusion may be taking place.
 
 2. Anomaly based intrusion detection systems - typical behavior is modelled so that non-typical behavior can be detected.
+
+# Cors
+
+- Specifies which origins are allowed to access resources on a server.
+- The server must respond with appropriate headers to allow the request.
+
+  Access Control Headers
+
+  1.  Access-Control-Allow-Origin : specifies allowed origins
+  2.  Access-Control-Allow-Methods: specifies allowed methods
+  3.  Access-Control-Allow-Headers: specifies allowed list of custom headers eg (Authorization, Content-Type)
+  4.  Access-Control-Max-Age: specifies how long the preflight response can be cached.
+  5.  Access-Control-Allow-Credentials: determines if browser can include credentials in request.
+
+  Preflight requests
+
+  - For more complex requests eg (PUT, DELETE), custom headers or credentials, browsers perform a preflight request via OPTIONS method before sending the actual request to ensure the server permits the cross origin operation.
+  - OPTIONS is used by a client to determine which HTTP methods are supported by the server for an endpoint. It is a safe HTTP method , meaning it doesnt alter the state of the server.
+
+  ```
+  OPTIONS /api/resource HTTP/1.1
+  Host: api.example.com
+  Origin: https://frontend.example.com
+  Access-Control-Request-Method: POST
+  Access-Control-Request-Headers: Authorization, Content-Type
+  ```
+
+  server responds
+
+  ```
+   HTTP/1.1 204 No Content
+   Access-Control-Allow-Origin: https://frontend.example.com
+   Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+   Access-Control-Allow-Headers: Authorization, Content-Type
+   Access-Control-Allow-Credentials: true
+  ```

@@ -22,10 +22,8 @@ Along with partitioning a result set into windows, you can also define sort orde
 mysql> SELECT quarter(payment_date) quarter,
 -> monthname(payment_date) month_nm,
 -> sum(amount) monthly_sales,
--> max(sum(amount))
--> over () max_overall_sales,
--> max(sum(amount))
--> over (partition by quarter(payment_date)) max_qrtr_sales
+-> max(sum(amount)) over () max_overall_sales,
+-> max(sum(amount)) over (partition by quarter(payment_date)) max_qrtr_sales
 -> rank() over (order by sum(amount) desc) sales_rank
 -> FROM payment
 -> WHERE year(payment_date) = 2005

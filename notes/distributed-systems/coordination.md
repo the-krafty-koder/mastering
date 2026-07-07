@@ -86,3 +86,49 @@ Publishing the notification of an event when that event occurrs to processes sub
 
     ## Centralized implementation
     Involves a central server that handles all subscriptions and notifications. A subscriber submits a subscription for storage, when publisher submits a notification, that notification is checked against every subscription, and when match is found, that notification is copied and sent to the subscriber
+
+# Deadlocks
+
+- When 2 or more programs get stuck, each waiting for the other to release resources, so none of them can proceed.
+
+  Deadlock avoidance
+
+  - Resource ordering -> assign a global order to resources (e.g., LockA = 1, LockB = 2) and always acquire multiple locks in that same order. It prevents circular wait because threads cannot wait on a lower-numbered lock while holding a higher-numbered one.
+  - Hold and wait prevention -> avoid holding one resource while waiting for another.
+  - Use try-locks with timeouts -> instead of blocking indefinitely, try acquiring a lock with a timeout. If unavailable, release held locks and try later.
+
+  Deadlock detection
+
+  - If theres a single instance of a resource, run algorithms to check for cycles in the resource allocation graph.The presence of a cycle signifies deadlock presence.
+  - If there are multiple instances, Bankers algorithm can be used to periodically check for deadlocks.
+  - Wait for Graph algorithm can be used where resources have multiple instances. The WAG is a directed graph that represents dependencies between processes.
+
+  Deadlock recovery
+
+  - Killing processes involved in the deadlock.
+  - Process rollback - rollback deadlocked processes to previous states where deadlocked condition did not exist.
+  - Resource preemption - temporarily taking a resource away from a process or thread, usually by the OS, so another process can use it.
+  - Concurrency control mechanisms to manage shared access to resources.
+
+  Advantages of deadlock recovery
+
+  1. Improved system stability.
+  2. Better resource utilisation.
+
+  Disadvantages
+
+  1. Performance overhead - detection and recovery algos can introduce overhead in terms of performance.
+  2. Complexity - detection and recovery algos can be difficult to implement.
+  3. Risk of data loss if processes are rolled back.
+
+# Race condition
+
+When multiple processes have access to shared data and they try to modify that data at the same time.
+
+Critical section -> a code part where the shared resources are accessed.
+
+Preventing race conditions
+
+1.  Use mutex locks
+2.  Proper synchronization -> ensure processes or threads work in a coordinated sequence when accessing shared data.
+3.  Priority management -> prioritise certain processes so they get controlled access to critical resources.

@@ -78,3 +78,70 @@ ACID guarantees transaction reliability.
 # Federation
 
 - Splitting a database up by function eg Instead of a single monolithic DB, have seperate DBs for users, forums and products leading to less traffic to each
+
+# Postgres full text search
+
+- Postgres doesn’t just compare raw text — it breaks text into tokens (words or terms), reduces them to lexemes (normalized forms, e.g. “running” → “run”), and then stores or indexes these lexemes for fast search.
+
+- There are 3 main components
+
+  1.  tsvector -> a list of unique, normalized lexemes (keywords) with their positions in the text.
+  2.  tsquery -> a search query ( what youre looking for)
+  3.  @@ -> the match operator between tsvector and tsquery.
+
+- For this table
+
+```
+CREATE TABLE documents (
+  id serial PRIMARY KEY,
+  content text
+);
+```
+
+- You can insert data and search it like so
+
+```
+INSERT INTO documents (content)
+VALUES ('Running fast improves your stamina.');
+```
+
+```
+SELECT *
+FROM documents
+WHERE to_tsvector('english', content) @@ to_tsquery('run & fast');
+```
+
+# GIN VS GIST indexing in Postgres full text search
+
+GIN
+
+- GIN stands for general inverted index. It is designed for data that contains many elements inside a single column, like arrays or ts_vector.
+- Normally a B-Tree index maps `value -> row` but GIN inverts this mapping to `term -> list of rows containing that term`.
+- When you run
+
+```
+CREATE INDEX idx_docs_fts ON documents
+USING GIN (to_tsvector('english', content));
+```
+
+- Postgres:
+
+  1.  Converts each content value into a tsvector.
+  2.  Extracts each lexeme (word stem).
+  3.  Builds an index mapping:
+
+      ```
+      'run' → [row 1, row 4, row 9]
+      'fast' → [row 1, row 7]
+      'stamina' → [row 1, row 3, row 10]
+      ```
+
+  4.  Stores this mapping compactly for quick lookup.
+
+GIST
+
+- Stands for Generalised Search Tree. It is a balanced tree index data structure, a framework that can support different types of data, not just text. Think of GiST as a toolkit for building custom indexes.
+- It is used internally for full-text search, range types, similarity search etc.
+- GIST organises data hierarchially but ordering depends on closeness or overlap.
+- When used in full text search, GIN stores same kind of info as GIST but in a tree rather than a mapping (inverted list).
+- use GIN for full text search and GIST for similarity search.

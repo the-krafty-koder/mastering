@@ -31,7 +31,7 @@ Determines the number of items to display on a page
         2. Page size cannot be easily changed.
         3. Query perfomance degrades over time.
 
-    2. Cursor based pagination - uses a pointer to a specific record on the db. "Give me 5 items starting after [specific item].". The cursor is usually a unique identifier, which can be the item id, timestamp, or something else. Subsequent requests use the identifier of the last item as the cursor to fetch the next set of items
+    2. Cursor based pagination - uses a pointer to a specific record on the db. "Give me 5 items starting after [specific item]." The cursor is usually a unique identifier, which can be the item id, timestamp, or something else. Subsequent requests use the identifier of the last item as the cursor to fetch the next set of items
         Advantages
         1.More efficient and faster on large datasets.
         2.Avoids the inaccurate page window problem because new posts added over time do not affect the offset, which is determined by a fixed cursor
@@ -66,7 +66,7 @@ Frontend
 5. Compression
    Compress static assets eg images, minify css and js files
 6. Tree shaking
-   Removes unused code from the final bundle before deployment
+   Removes unused code from the final bundle before deployment. A dependency graph is built using static analysis via ES modules(imported modules are known at runtime), functions not used are scraped off.
 7. Pagination
    Fetch a limited set of data per page
 
